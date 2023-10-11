@@ -44,50 +44,156 @@ class _DemoScreenState extends State<DemoScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-
+                Container(
+                  height: 150,
+                  width: MediaQuery.of(context).size.width,
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: const  BoxDecoration(
+                            color: Colors.greenAccent,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15))),
+                        height: 100,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      const Positioned(
+                        left: 20,
+                        right: 20,
+                        height: 80,
+                        top: 50,
+                        child: Card(
+                          child: ListTile(
+                            trailing: Icon(Icons.check_circle),
+                            title: Text("Softwarica college"),
+                            subtitle: Text("Hello"),
+                            leading: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/images/download.jpeg")),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        width: 100,
+                        height: 150,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Container(
+                        width: 100,
+                        height: 150,
+                        color: Colors.yellow,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        width: 100,
+                        height: 150,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 150,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      width: 100,
+                      height: 150,
+                      color: Colors.yellow,
+                    ),
+                    Container(
+                      width: 100,
+                      height: 150,
+                      color: Colors.green,
+                    ),
+                  ],
+                ),
                 Image.asset("assets/images/download.jpeg"),
                 Container(
                   height: 100,
                   width: 100,
-                  child: Center(
+                  decoration: const BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(25),
+                      )),
+                  child: const Center(
                     child: Text("Flutter",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.bold)),
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(25),
-                      )),
                 ),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
-                Image.network("https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
+                Image.network(
+                    "https://seeklogo.com/images/F/flutter-logo-5086DD11C5-seeklogo.com.png"),
               ],
             ),
           )),
