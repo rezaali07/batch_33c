@@ -1,3 +1,4 @@
+import 'package:batch33c/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class RootScreen extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
-      home: DemoScreen(),
+      home: DashBoardScreen(),
     );
   }
 }
@@ -50,7 +51,7 @@ class _DemoScreenState extends State<DemoScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        decoration: const  BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.greenAccent,
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(15),
@@ -69,6 +70,7 @@ class _DemoScreenState extends State<DemoScreen> {
                             title: Text("Softwarica college"),
                             subtitle: Text("Hello"),
                             leading: CircleAvatar(
+
                                 backgroundImage:
                                     AssetImage("assets/images/download.jpeg")),
                           ),
