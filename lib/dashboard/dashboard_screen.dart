@@ -44,7 +44,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 flex: 4,
                 child: Container(
                   height: 150,
-
                   child: Column(
                     children: [
                       Row(
@@ -65,15 +64,24 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         children: const [
                           Expanded(
                               flex: 4,
-                              child: OutlinedButton(onPressed: null, child: Text("Message"))),
-                          SizedBox(width: 10,),
+                              child: OutlinedButton(
+                                  onPressed: null, child: Text("Message"))),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                               flex: 2,
-                              child: OutlinedButton(onPressed: null, child: Icon(Icons.person_add_alt))),
-                          SizedBox(width: 10,),
+                              child: OutlinedButton(
+                                  onPressed: null,
+                                  child: Icon(Icons.person_add_alt))),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                               flex: 2,
-                              child: OutlinedButton(onPressed: null, child: Icon(Icons.arrow_drop_down))),
+                              child: OutlinedButton(
+                                  onPressed: null,
+                                  child: Icon(Icons.arrow_drop_down))),
                         ],
                       ),
                     ],
