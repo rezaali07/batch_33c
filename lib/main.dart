@@ -1,9 +1,12 @@
 import 'package:batch33c/dashboard/dashboard_screen.dart';
+import 'package:batch33c/routes/route_generator.dart';
+import 'package:batch33c/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(RootScreen());
 }
+
 
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});
@@ -13,7 +16,9 @@ class RootScreen extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
-      home: DashBoardScreen(),
+      // home: DashBoardScreen(),
+      initialRoute: SplashScreen.routeName,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
