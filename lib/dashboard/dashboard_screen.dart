@@ -151,8 +151,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 ...List.generate(
 
-
-
                   50,
                   (index) =>
                       Image.asset("assets/images/tree.jpeg", fit: BoxFit.cover),
