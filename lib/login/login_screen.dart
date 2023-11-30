@@ -1,3 +1,5 @@
+import 'package:batch33c/common_widgets/common_text_field.dart';
+import 'package:batch33c/registration/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,28 +27,17 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Email",
+            const Text("Email",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: TextFormField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.mail),
+                padding: const EdgeInsets.only(top: 10),
+                child: CommonTextField(
                   hintText: "Enter email",
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide:
-                          const BorderSide(color: Colors.grey, width: 2)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide:
-                          const BorderSide(color: Colors.green, width: 2)),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+                  controller: emailController,
+                  prefixIcon: const Icon(Icons.mail),
+                )),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0),
               child: Text("Password",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             ),
@@ -78,6 +69,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 500,
+              child: ElevatedButton(onPressed: () {}, child: Text("Login")),
+            ),
+            Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, RegistrationScreen.routeName);
+                    },
+                    child: const Text("Register now"))),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:batch33c/login/login_screen.dart';
+import 'package:batch33c/registration/registration_screen.dart';
 import 'package:batch33c/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,9 @@ class RouteGenerator {
 
       case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+
+      case RegistrationScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const RegistrationScreen());
 
       default:
         _onPageNotFound();
