@@ -1,6 +1,8 @@
 import 'package:batch33c/login/login_screen.dart';
+import 'package:batch33c/navigation/navigation_screen.dart';
 import 'package:batch33c/registration/registration_screen.dart';
 import 'package:batch33c/splash/splash_screen.dart';
+import 'package:batch33c/tabbar_example/tab_bar_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -16,6 +18,12 @@ class RouteGenerator {
 
       case RegistrationScreen.routeName:
         return MaterialPageRoute(builder: (_) => const RegistrationScreen());
+
+      case NavigationScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const NavigationScreen());
+
+      case TabBarScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const TabBarScreen());
 
       default:
         _onPageNotFound();

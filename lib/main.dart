@@ -1,6 +1,8 @@
 import 'package:batch33c/dashboard/dashboard_screen.dart';
+import 'package:batch33c/navigation/navigation_screen.dart';
 import 'package:batch33c/routes/route_generator.dart';
 import 'package:batch33c/splash/splash_screen.dart';
+import 'package:batch33c/tabbar_example/tab_bar_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class RootScreen extends StatelessWidget {
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
       // home: DashBoardScreen(),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: TabBarScreen.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
