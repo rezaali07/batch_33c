@@ -1,8 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.batch33c">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="batch33c"
         android:name="${applicationName}"
+       android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

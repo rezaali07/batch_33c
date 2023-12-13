@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDSycSNDVNqxFlhwcTcbmZTs_U1w4jlrkk',
-    appId: '1:8210407171:android:d9e9b73ab824d56a69d336',
-    messagingSenderId: '8210407171',
-    projectId: 'batch33c-f83d6',
-    storageBucket: 'batch33c-f83d6.appspot.com',
+    apiKey: 'AIzaSyAQ7AAqOCM9vRViHJKE4WpEf7hduPiCM4k',
+    appId: '1:855852399443:android:332333eb068f9e0fadbfa6',
+    messagingSenderId: '855852399443',
+    projectId: 'batch33cre',
+    storageBucket: 'batch33cre.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDjdPRZfu--uMbdRJqd3MxJ2qsS1a6kqRw',
-    appId: '1:8210407171:ios:f7e478c05fee52ba69d336',
-    messagingSenderId: '8210407171',
-    projectId: 'batch33c-f83d6',
-    storageBucket: 'batch33c-f83d6.appspot.com',
+    apiKey: 'AIzaSyAGNP20DW8pW8qgrrLkYf0bmOiqmp8hNm4',
+    appId: '1:855852399443:ios:a0d8d83264a35978adbfa6',
+    messagingSenderId: '855852399443',
+    projectId: 'batch33cre',
+    storageBucket: 'batch33cre.appspot.com',
     iosBundleId: 'com.example.batch33c',
   );
 }

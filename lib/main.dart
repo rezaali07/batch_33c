@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 void main() async{
-  await Firebase.initializeApp(
+  WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp(
      options: DefaultFirebaseOptions.currentPlatform,
    );
   runApp(RootScreen());
@@ -25,7 +26,7 @@ class RootScreen extends StatelessWidget {
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
       // home: DashBoardScreen(),
-      initialRoute: TabBarScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

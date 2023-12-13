@@ -1,5 +1,6 @@
 import 'package:batch33c/common_widgets/common_text_field.dart';
 import 'package:batch33c/registration/registration_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,6 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool visibility = true;
+  bool loading = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +78,39 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               width: 500,
               child: ElevatedButton(onPressed: () {}, child: Text("Login")),
+            ),
+            loading == true ? Align(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator()) : Container(
+              width: 500,
+              child: ElevatedButton(
+                  onPressed: () async {
+                    setState(() {
+                      loading = true;
+                    });
+                    try {
+                      final user = await _auth.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text);
+
+                      if(user.user != null){
+                        setState(() {
+                          loading = false;
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfull")));
+
+                        // Navigator.pushReplacementNamed(context, "destination screen");
+                      }
+                    } on Exception catch (e) {
+                      setState(() {
+                        loading = false;
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+
+                      // TODO
+                    }
+                  },
+                  child: Text("Register")),
             ),
             Align(
                 alignment: Alignment.centerRight,
