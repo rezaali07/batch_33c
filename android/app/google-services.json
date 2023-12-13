@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8210407171",
+    "project_id": "batch33c-f83d6",
+    "storage_bucket": "batch33c-f83d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8210407171:android:d9e9b73ab824d56a69d336",
+        "android_client_info": {
+          "package_name": "com.example.batch33c"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSycSNDVNqxFlhwcTcbmZTs_U1w4jlrkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

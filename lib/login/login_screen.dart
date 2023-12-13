@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 obscureText: visibility,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.key),
+                  prefixIcon: const Icon(Icons.key),
                   suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -55,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                       child: visibility == false
-                          ? Icon(Icons.visibility_off)
-                          : Icon(Icons.visibility)),
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility)),
                   hintText: "Enter password",
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
