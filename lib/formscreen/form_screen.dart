@@ -38,10 +38,24 @@ class _FormScreenState extends State<FormScreen> {
           TextFormField(
               controller: email,
               decoration: InputDecoration(label: Text("Email"))),
-
-        ElevatedButton(onPressed: (){
-
-        }, child: Text("Submit"))
+          ElevatedButton(
+              onPressed: () async {
+                var datas = {
+                  "firstName": fname.text,
+                  "lastName": lname.text,
+                  "contact": contact.text,
+                  "address": address.text,
+                  "email": email.text,
+                };
+                await database.ref().push().set(datas).then((value) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text("Success")));
+                }).onError((error, stackTrace) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(error.toString())));
+                });
+              },
+              child: Text("Submit"))
         ],
       ),
     );
