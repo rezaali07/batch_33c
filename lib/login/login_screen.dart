@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       loading = true;
                     });
                     try {
-                      final user = await _auth.signInWithEmailAndPassword(
+                      final user = await _auth.createUserWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text);
 
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // TODO
                     }
                   },
-                  child: Text("Register")),
+                  child: const Text("Register")),
             ),
             Align(
                 alignment: Alignment.centerRight,

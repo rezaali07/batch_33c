@@ -1,4 +1,5 @@
 import 'package:batch33c/dashboard/dashboard_screen.dart';
+import 'package:batch33c/formscreen/form_screen.dart';
 import 'package:batch33c/navigation/navigation_screen.dart';
 import 'package:batch33c/routes/route_generator.dart';
 import 'package:batch33c/splash/splash_screen.dart';
@@ -26,7 +27,7 @@ class RootScreen extends StatelessWidget {
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
       // home: DashBoardScreen(),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: FormScreen.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

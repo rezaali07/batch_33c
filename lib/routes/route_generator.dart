@@ -1,3 +1,4 @@
+import 'package:batch33c/formscreen/form_screen.dart';
 import 'package:batch33c/login/login_screen.dart';
 import 'package:batch33c/navigation/navigation_screen.dart';
 import 'package:batch33c/registration/registration_screen.dart';
@@ -21,6 +22,8 @@ class RouteGenerator {
 
       case NavigationScreen.routeName:
         return MaterialPageRoute(builder: (_) => const NavigationScreen());
+      case FormScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const FormScreen());
 
       case TabBarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const TabBarScreen());
