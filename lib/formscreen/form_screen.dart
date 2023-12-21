@@ -26,6 +26,15 @@ class _FormScreenState extends State<FormScreen> {
         key: _key,
         child: Column(
           children: [
+            //futurebuilder
+            //streambuilder
+            StreamBuilder(
+              stream: database.ref('users').onValue,
+              builder: (context, snapshot) {
+                print(snapshot.data!.snapshot.value);
+                return Text("data");
+              },
+            ),
             TextFormField(
                 validator: (value) {
                   if (value == "") {
@@ -70,8 +79,8 @@ class _FormScreenState extends State<FormScreen> {
                         .push()
                         .set(datas)
                         .then((value) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text("Success")));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Success")));
                     }).onError((error, stackTrace) {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(error.toString())));
