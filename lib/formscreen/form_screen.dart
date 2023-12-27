@@ -32,6 +32,13 @@ class _FormScreenState extends State<FormScreen> {
               StreamBuilder(
                 stream: database.ref('users').onValue,
                 builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  } else if (snapshot.data == null) {
+                    return const Text("No data available");
+                  }
                   print(snapshot.data!.snapshot.value);
                   Map<dynamic, dynamic> _datas =
                       snapshot.data!.snapshot.value as dynamic;
