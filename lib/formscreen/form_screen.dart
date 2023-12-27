@@ -14,6 +14,7 @@ class _FormScreenState extends State<FormScreen> {
   final TextEditingController contact = TextEditingController();
   final TextEditingController address = TextEditingController();
   final TextEditingController email = TextEditingController();
+  final TextEditingController emailEditController = TextEditingController();
 
   final database = FirebaseDatabase.instance;
 
@@ -36,7 +37,7 @@ class _FormScreenState extends State<FormScreen> {
                     return const CircularProgressIndicator();
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
-                  } else if (snapshot.data == null) {
+                  } else if (snapshot.data!.snapshot.value == null) {
                     return const Text("No data available");
                   }
                   print(snapshot.data!.snapshot.value);
@@ -50,6 +51,72 @@ class _FormScreenState extends State<FormScreen> {
                     physics: const ScrollPhysics(),
                     itemBuilder: (context, index) {
                       return ListTile(
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    emailEditController.text =
+                                        value[index]['email'].toString();
+                                  });
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: Text("Edit data"),
+                                      content: Container(
+                                        height: 400,
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                                controller:
+                                                    emailEditController),
+                                            ElevatedButton(
+                                                onPressed: () async {
+                                                  var datas = {
+                                                    "email":
+                                                        emailEditController.text
+                                                  };
+                                                  await database
+                                                      .ref()
+                                                      .child('users')
+                                                      .child(key[index])
+                                                      .update(datas);
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text("Update")),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: Colors.green,
+                                )),
+                            IconButton(
+                                onPressed: () async {
+                                  await database
+                                      .ref()
+                                      .child('users')
+                                      .child(key[index])
+                                      .remove()
+                                      .then((value) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text("Deleted")));
+                                  }).onError((error, stackTrace) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(error.toString())));
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                )),
+                          ],
+                        ),
                         title: Text(value[index]['email'].toString()),
                       );
                     },
@@ -97,7 +164,7 @@ class _FormScreenState extends State<FormScreen> {
                       await database
                           .ref()
                           .child("users")
-                          .child("1")
+                          .push()
                           .set(datas)
                           .then((value) {
                         ScaffoldMessenger.of(context).showSnackBar(
