@@ -1,4 +1,5 @@
 import 'package:batch33c/dashboard/dashboard_screen.dart';
+import 'package:batch33c/firestore_example/firestore_example.dart';
 import 'package:batch33c/formscreen/form_screen.dart';
 import 'package:batch33c/navigation/navigation_screen.dart';
 import 'package:batch33c/routes/route_generator.dart';
@@ -27,7 +28,7 @@ class RootScreen extends StatelessWidget {
       theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
       // home: DashBoardScreen(),
-      initialRoute: FormScreen.routeName,
+      initialRoute: FirestoreExample.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

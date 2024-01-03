@@ -1,3 +1,4 @@
+import 'package:batch33c/firestore_example/firestore_example.dart';
 import 'package:batch33c/formscreen/form_screen.dart';
 import 'package:batch33c/login/login_screen.dart';
 import 'package:batch33c/navigation/navigation_screen.dart';
@@ -24,6 +25,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NavigationScreen());
       case FormScreen.routeName:
         return MaterialPageRoute(builder: (_) => const FormScreen());
+   case FirestoreExample.routeName:
+        return MaterialPageRoute(builder: (_) => const FirestoreExample());
 
       case TabBarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const TabBarScreen());
