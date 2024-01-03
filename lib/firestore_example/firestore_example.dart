@@ -15,7 +15,7 @@ class _FirestoreExampleState extends State<FirestoreExample> {
   TextEditingController fnameController = TextEditingController();
   TextEditingController lnameController = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +30,13 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           TextFormField(controller: fnameController),
           Text("Lastname"),
           TextFormField(controller: lnameController),
+
+          loading == true ? CircularProgressIndicator() :
           ElevatedButton(
               onPressed: () async {
+                setState(() {
+                  loading = true;
+                });
                 var data = {
                   "email": emailController.text,
                   "firstname": fnameController.text,
@@ -45,7 +50,13 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                   clearData();
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text("Data Submitted")));
+                  setState(() {
+                    loading = false;
+                  });
                 }).onError((error, stackTrace) {
+                  setState(() {
+                    loading = false;
+                  });
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(error.toString())));
                 });
