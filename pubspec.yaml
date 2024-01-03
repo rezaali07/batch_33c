@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.15.3
   firebase_database:
   cloud_firestore: ^4.13.6
+  overlay_kit: ^1.0.8
 
 
 dev_dependencies:

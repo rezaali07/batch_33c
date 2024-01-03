@@ -7,6 +7,7 @@ import 'package:batch33c/splash/splash_screen.dart';
 import 'package:batch33c/tabbar_example/tab_bar_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:overlay_kit/overlay_kit.dart';
 
 import 'firebase_options.dart';
 
@@ -24,12 +25,14 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
-      debugShowCheckedModeBanner: false,
-      // home: DashBoardScreen(),
-      initialRoute: FirestoreExample.routeName,
-      onGenerateRoute: RouteGenerator.generateRoute,
+    return OverlayKit(
+      child: MaterialApp(
+        theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
+        debugShowCheckedModeBanner: false,
+        // home: DashBoardScreen(),
+        initialRoute: FirestoreExample.routeName,
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
 }

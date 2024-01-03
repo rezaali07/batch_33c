@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:overlay_kit/overlay_kit.dart';
 
 class FirestoreExample extends StatefulWidget {
   const FirestoreExample({super.key});
@@ -30,13 +31,9 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           TextFormField(controller: fnameController),
           Text("Lastname"),
           TextFormField(controller: lnameController),
-
-          loading == true ? CircularProgressIndicator() :
           ElevatedButton(
               onPressed: () async {
-                setState(() {
-                  loading = true;
-                });
+                OverlayLoadingProgress.start();
                 var data = {
                   "email": emailController.text,
                   "firstname": fnameController.text,
@@ -50,13 +47,10 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                   clearData();
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text("Data Submitted")));
-                  setState(() {
-                    loading = false;
-                  });
+
+                  OverlayLoadingProgress.stop();
                 }).onError((error, stackTrace) {
-                  setState(() {
-                    loading = false;
-                  });
+                  OverlayLoadingProgress.stop();
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(error.toString())));
                 });
