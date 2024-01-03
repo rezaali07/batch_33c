@@ -1,4 +1,6 @@
+import 'package:batch33c/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_kit/overlay_kit.dart';
@@ -34,15 +36,15 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           ElevatedButton(
               onPressed: () async {
                 OverlayLoadingProgress.start();
-                var data = {
-                  "email": emailController.text,
-                  "firstname": fnameController.text,
-                  "lastname": lnameController.text,
-                };
+
+                UserModel model = UserModel(
+                    email: emailController.text,
+                    lastname: lnameController.text,
+                    firstname: fnameController.text);
                 await firestore
                     .collection('users')
                     .doc()
-                    .set(data)
+                    .set(model.toJson())
                     .then((value) {
                   clearData();
                   ScaffoldMessenger.of(context)
