@@ -12,10 +12,12 @@ class UserModel {
   String email;
   String ? firstname;
   String ? lastname;
+  String ? image;
 
   UserModel({
     required this.email,
     this.firstname,
+    this.image,
     this.lastname,
   });
 
@@ -23,10 +25,12 @@ class UserModel {
     email: json["email"],
     firstname: json["firstname"],
     lastname: json["lastname"],
+    image: json["image"],
   );
 
   Map<String, dynamic> toJson() => {
     "email": email,
+    "image": image,
     "firstname": firstname,
     "lastname": lastname,
   };

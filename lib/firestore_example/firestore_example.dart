@@ -137,7 +137,8 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                 UserModel model = UserModel(
                     email: emailController.text,
                     lastname: lnameController.text,
-                    firstname: fnameController.text);
+                    firstname: fnameController.text,
+                    image: url);
                 await firestore
                     .collection('users')
                     .doc()
