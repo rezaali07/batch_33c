@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:batch33c/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 
 class FirestoreExample extends StatefulWidget {
@@ -19,6 +23,24 @@ class _FirestoreExampleState extends State<FirestoreExample> {
   TextEditingController lnameController = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   bool loading = false;
+
+  ImagePicker picker = ImagePicker();
+  FirebaseStorage storage = FirebaseStorage.instance;
+  File? image;
+  String? url;
+
+  void pickImage(ImageSource source) async {
+    var selected = await picker.pickImage(source: source, imageQuality: 100);
+    if (selected == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("No image selected")));
+    } else {
+      setState(() {
+        image = File(selected.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +55,9 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           TextFormField(controller: fnameController),
           Text("Lastname"),
           TextFormField(controller: lnameController),
+
+          image == null ? SizedBox() : Image.file(image!),
+
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -45,15 +70,20 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                         children: [
                           //camera ko image
                           Expanded(
-                              child: Column(
-                            children: [
-                              Image.asset(
-                                "assets/images/camera.jpg",
-                                height: 100,
-                                width: 100,
-                              ),
-                              Text("Camera"),
-                            ],
+                              child: InkWell(
+                                onTap:(){
+                                  pickImage(ImageSource.camera);
+                                },
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/images/camera.jpg",
+                                  height: 100,
+                                  width: 100,
+                                ),
+                                Text("Camera"),
+                              ],
+                            ),
                           )),
                           //gallery ko image
                           Expanded(
