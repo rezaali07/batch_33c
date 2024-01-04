@@ -34,6 +34,47 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           Text("Lastname"),
           TextFormField(controller: lnameController),
           ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Choose image"),
+                    content: Container(
+                      height: 200,
+                      child: Row(
+                        children: [
+                          //camera ko image
+                          Expanded(
+                              child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/camera.jpg",
+                                height: 100,
+                                width: 100,
+                              ),
+                              Text("Camera"),
+                            ],
+                          )),
+                          //gallery ko image
+                          Expanded(
+                              child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/gallery.jpg",
+                                height: 100,
+                                width: 100,
+                              ),
+                              Text("Gallery"),
+                            ],
+                          ))
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+              child: Text("Browse image")),
+          ElevatedButton(
               onPressed: () async {
                 OverlayLoadingProgress.start();
 
