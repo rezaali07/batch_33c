@@ -37,8 +37,23 @@ class _FirestoreExampleState extends State<FirestoreExample> {
     } else {
       setState(() {
         image = File(selected.path);
+        saveToStorage();
       });
     }
+  }
+
+  void saveToStorage() async {
+    String name = image!.path.split('/').last;
+
+    final photo = await storage
+        .ref()
+        .child('users')
+        .child(name)
+        .putFile(File(image!.path));
+    String tempUrl = await photo.ref.getDownloadURL();
+    setState(() {
+      url = tempUrl;
+    });
   }
 
   @override
@@ -55,9 +70,13 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           TextFormField(controller: fnameController),
           Text("Lastname"),
           TextFormField(controller: lnameController),
-
-          image == null ? SizedBox() : Image.file(image!),
-
+          image == null
+              ? SizedBox()
+              : Image.file(
+                  image!,
+                  height: 200,
+                  width: 200,
+                ),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -71,9 +90,10 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                           //camera ko image
                           Expanded(
                               child: InkWell(
-                                onTap:(){
-                                  pickImage(ImageSource.camera);
-                                },
+                            onTap: () {
+                              pickImage(ImageSource.camera);
+                              Navigator.pop(context);
+                            },
                             child: Column(
                               children: [
                                 Image.asset(
@@ -87,15 +107,21 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                           )),
                           //gallery ko image
                           Expanded(
-                              child: Column(
-                            children: [
-                              Image.asset(
-                                "assets/images/gallery.jpg",
-                                height: 100,
-                                width: 100,
-                              ),
-                              Text("Gallery"),
-                            ],
+                              child: InkWell(
+                            onTap: () {
+                              pickImage(ImageSource.gallery);
+                              Navigator.pop(context);
+                            },
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/images/gallery.jpg",
+                                  height: 100,
+                                  width: 100,
+                                ),
+                                Text("Gallery"),
+                              ],
+                            ),
                           ))
                         ],
                       ),
