@@ -34,6 +34,14 @@ class _FirestoreExampleState extends State<FirestoreExample> {
           ElevatedButton(
               onPressed: () async {
                 OverlayLoadingProgress.start();
+                
+                UserModel model = UserModel(
+                  email: emailController.text,
+                  lastname: lnameController.text,
+                  firstname: fnameController.text
+                ); // userModel
+                await firestore
+                .collection('users')
                 var data = {
                   "email": emailController.text,
                   "firstname": fnameController.text,
@@ -56,8 +64,10 @@ class _FirestoreExampleState extends State<FirestoreExample> {
                 });
               },
               child: Text("Submit"))
+
         ],
       ),
+
     );
   }
 
